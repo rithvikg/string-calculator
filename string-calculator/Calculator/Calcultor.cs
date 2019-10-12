@@ -25,26 +25,20 @@ namespace string_calculator
 			return input;
 		}
 
-		public void CalculateTwoNumbers()
+		public void CalculateNumbers()
 		{
 			int result = 0;
-			string CalcInput = getInput();
-			string[] NumList = CalcInput.Split(",");
+			string calcInput = getInput();
+			string[] numList = calcInput.Split(",");
 
-			if (NumList.Length <= 2)
+			
+			
+			for (int i = 0; i < numList.Length; i++)
 			{
-				for (int i = 0; i < NumList.Length; i++)
-				{
-					int.TryParse(NumList[i], out int n);
-					result += n;
-				}
+				int.TryParse(numList[i], out int n);
+				result += n;
 			}
-			else
-			{
-				throw new Exception("More than two arguments given");
-			}
-			Console.WriteLine(result);
-
+			Console.WriteLine("\n" + result);
 		}
 	}
 }
