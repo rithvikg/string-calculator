@@ -42,6 +42,10 @@ namespace string_calculator
                 {
                     negativeNumbers.Add(n);
                 }
+                else if (n > 1000)
+                {
+                    continue;
+                }
                 else
                 {
                     result += n;
