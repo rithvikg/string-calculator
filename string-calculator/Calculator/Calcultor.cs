@@ -30,14 +30,28 @@ namespace string_calculator
 		{
 			int result = 0;
 			string calcInput = getInput();
-            
+            List<int> negativeNumbers = new List<int>();
+
             var numList = Regex.Split(calcInput, @"[,\s\\n]+"); //Split on ',' and '\n' 
 
             for (int i = 0; i < numList.Length; i++)
 			{
 				int.TryParse(numList[i], out int n);
-				result += n;
+
+                if (n < 0)
+                {
+                    negativeNumbers.Add(n);
+                }
+                else
+                {
+                    result += n;
+                }
 			}
+            if (negativeNumbers.Count > 0)
+            {
+                string negNum = string.Join(",", negativeNumbers.ToArray()); //Converting list to string to print in exception
+                throw new Exception("Negative Numbers Not Allowed. Negative Numbers Inputted: " + negNum);
+            }
 			Console.WriteLine("\n" + result);
 		}
 	}

@@ -15,7 +15,6 @@ namespace string_calculator
 			var strInput = Console.ReadLine();
 
 			Calcultor calc = new Calcultor(strInput);
-
             calc.CalculateNumbers();
 		}
 	}
