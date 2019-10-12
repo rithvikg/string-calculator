@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace string_calculator
 {
@@ -29,11 +30,10 @@ namespace string_calculator
 		{
 			int result = 0;
 			string calcInput = getInput();
-			string[] numList = calcInput.Split(",");
+            
+            var numList = Regex.Split(calcInput, @"[,\s\\n]+"); //Split on ',' and '\n' 
 
-			
-			
-			for (int i = 0; i < numList.Length; i++)
+            for (int i = 0; i < numList.Length; i++)
 			{
 				int.TryParse(numList[i], out int n);
 				result += n;

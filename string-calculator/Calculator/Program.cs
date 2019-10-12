@@ -16,8 +16,7 @@ namespace string_calculator
 
 			Calcultor calc = new Calcultor(strInput);
 
-			calc.CalculateNumbers();
-
+            calc.CalculateNumbers();
 		}
 	}
 }
