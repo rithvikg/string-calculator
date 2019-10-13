@@ -32,8 +32,21 @@ namespace string_calculator
 			string calcInput = getInput();
             List<int> negativeNumbers = new List<int>();
 
-            var numList = Regex.Split(calcInput, @"[,\s\\n]+"); //Split on ',' and '\n' 
+            string[] delimiterChars =
+            {
+                ",",
+                "\\n",
+                ""    //Placeholder for custome delimiter
+            };
 
+            var delimiter = Regex.Match(calcInput, @"//(.)\\n\d").Groups[1].Value;
+            if (delimiter.Length > 0)
+            {
+                delimiterChars[2] = delimiter;
+            }
+           
+            var numList = calcInput.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+            
             for (int i = 0; i < numList.Length; i++)
 			{
 				int.TryParse(numList[i], out int n);
@@ -57,6 +70,7 @@ namespace string_calculator
                 throw new Exception("Negative Numbers Not Allowed. Negative Numbers Inputted: " + negNum);
             }
 			Console.WriteLine("\n" + result);
-		}
-	}
+            
+        }
+    }
 }
