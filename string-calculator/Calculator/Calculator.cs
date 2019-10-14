@@ -8,7 +8,7 @@ namespace string_calculator
 	public class Calculator
 	{
 		private string input;
-        private string stretchResult;
+            	private string stretchResult;
 
 		public Calculator(string input)
 		{
