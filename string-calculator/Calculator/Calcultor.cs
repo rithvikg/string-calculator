@@ -30,28 +30,39 @@ namespace string_calculator
 		{
 			int result = 0;
 			string calcInput = getInput();
-            List<int> negativeNumbers = new List<int>();
+            List<int> negativeNumbers = new List<int>(); //List of negative numbers to return
+            List<String> delimiterList = new List<String>(); //List of delimeters to split Input
 
-            string[] delimiterChars =
-            {
-                ",",
-                "\\n",
-                ""    //Placeholder for custom delimiter
-            };
+            delimiterList.Add(",");
+            delimiterList.Add("\\n");
 
-            var singleDelimiter = Regex.Match(calcInput, @"//(.)\\n\d").Groups[1].Value;
-            var customDelimiter = Regex.Match(calcInput, @"//\[(.*)\]\\n\d").Groups[1].Value;
             
+            string[] delimiterSplit = //Used to split custom Delimiter of any length
+            {
+                "[",
+                "]",
+                
+            };
+            
+            var singleDelimiter = Regex.Match(calcInput, @"//(.)\\n\d").Groups[1].Value;
+            var customDelimiterCheck = Regex.Match(calcInput, @"//(\[(.*)\])+\\n\d").Groups[1].Value;
+
+            var customDelimiter = customDelimiterCheck.Split(delimiterSplit, StringSplitOptions.RemoveEmptyEntries);
+
             if (singleDelimiter.Length > 0)
             {
-                delimiterChars[2] = singleDelimiter;
+                delimiterList.Add(singleDelimiter);
             }
 
             if (customDelimiter.Length > 0)
             {
-                delimiterChars[2] = customDelimiter;
+                for (int i = 0; i < customDelimiter.Length; i++)
+                {
+                    delimiterList.Add(customDelimiter[i]);
+                }
             }
 
+            string[] delimiterChars = delimiterList.ToArray();
 
             var numList = calcInput.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
             
