@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 namespace string_calculator
 {
 	
-	class Calcultor
+	public class Calculator
 	{
 		private string input;
 
-		public Calcultor(string input)
+		public Calculator(string input)
 		{
 			SetInput(input);
 
@@ -26,7 +26,7 @@ namespace string_calculator
 			return input;
 		}
 
-		public void CalculateNumbers()
+		public int CalculateNumbers()
 		{
 			int result = 0;
 			string calcInput = getInput();
@@ -74,7 +74,7 @@ namespace string_calculator
                 {
                     negativeNumbers.Add(n);
                 }
-                else if (n > 1000)
+                else if (n >= 1000)
                 {
                     continue;
                 }
@@ -88,9 +88,9 @@ namespace string_calculator
                 string negNum = string.Join(",", negativeNumbers.ToArray()); //Converting list to string to print in exception
                 throw new Exception("Negative Numbers Not Allowed. Negative Numbers Inputted: " + negNum);
             }
-			Console.WriteLine("\n" + result);
-            
-            
+            Console.WriteLine("\n" + result);
+            return result;
+			                      
         }
     }
 }
