@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,6 @@ namespace string_calculator
                 var result = calc.CalculateNumbers();
             }
 		}
-
         protected static void myHandler(object sender, ConsoleCancelEventArgs args)
         {
             Console.WriteLine("\nThe Calculator has Ended due to User Input.");
