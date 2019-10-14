@@ -4,8 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace string_calculator
-{
-	
+{	
 	public class Calculator
 	{
 		private string input;
