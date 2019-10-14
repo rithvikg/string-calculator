@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace string_calculator
 {
-	class Program
-	{
+class Program
+{
 		static void Main(string[] args)
 		{
             Console.WriteLine("String Calculator\n");
