@@ -9,6 +9,7 @@ namespace string_calculator
 	public class Calculator
 	{
 		private string input;
+        private string stretchResult;
 
 		public Calculator(string input)
 		{
@@ -64,7 +65,7 @@ namespace string_calculator
 
             string[] delimiterChars = delimiterList.ToArray();
 
-            var numList = calcInput.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+            var numList = calcInput.Split(delimiterChars, StringSplitOptions.None);
             
             for (int i = 0; i < numList.Length; i++)
 			{
@@ -76,19 +77,26 @@ namespace string_calculator
                 }
                 else if (n >= 1000)
                 {
-                    continue;
+                    stretchResult += 0;
+                    
                 }
                 else
                 {
                     result += n;
+                    stretchResult += n;
+                    
                 }
-			}
+                if (i != numList.Length - 1)
+                {
+                    stretchResult += "+";
+                }
+            }
             if (negativeNumbers.Count > 0)
             {
                 string negNum = string.Join(",", negativeNumbers.ToArray()); //Converting list to string to print in exception
                 throw new Exception("Negative Numbers Not Allowed. Negative Numbers Inputted: " + negNum);
             }
-            Console.WriteLine("\n" + result);
+            Console.WriteLine(stretchResult + " = " + result);
             return result;
 			                      
         }

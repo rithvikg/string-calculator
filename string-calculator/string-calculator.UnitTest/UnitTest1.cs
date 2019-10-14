@@ -112,5 +112,14 @@ namespace string_calculator.UnitTest
             Assert.AreEqual(res, 58);
 
         }
+
+        [TestMethod]
+        public void StrecthGoal1()
+        {
+            var sc = new Calculator("2,,4,rrrr,1001,6");
+            var res = sc.CalculateNumbers();
+            Assert.AreEqual(res, 12);
+
+        }
     }
 }
