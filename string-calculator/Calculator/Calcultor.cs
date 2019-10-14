@@ -36,15 +36,23 @@ namespace string_calculator
             {
                 ",",
                 "\\n",
-                ""    //Placeholder for custome delimiter
+                ""    //Placeholder for custom delimiter
             };
 
-            var delimiter = Regex.Match(calcInput, @"//(.)\\n\d").Groups[1].Value;
-            if (delimiter.Length > 0)
+            var singleDelimiter = Regex.Match(calcInput, @"//(.)\\n\d").Groups[1].Value;
+            var customDelimiter = Regex.Match(calcInput, @"//\[(.*)\]\\n\d").Groups[1].Value;
+            
+            if (singleDelimiter.Length > 0)
             {
-                delimiterChars[2] = delimiter;
+                delimiterChars[2] = singleDelimiter;
             }
-           
+
+            if (customDelimiter.Length > 0)
+            {
+                delimiterChars[2] = customDelimiter;
+            }
+
+
             var numList = calcInput.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
             
             for (int i = 0; i < numList.Length; i++)
@@ -70,6 +78,7 @@ namespace string_calculator
                 throw new Exception("Negative Numbers Not Allowed. Negative Numbers Inputted: " + negNum);
             }
 			Console.WriteLine("\n" + result);
+            
             
         }
     }
