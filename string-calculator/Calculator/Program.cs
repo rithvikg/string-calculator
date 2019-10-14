@@ -8,8 +8,8 @@ namespace string_calculator
 {
 class Program
 {
-		static void Main(string[] args)
-		{
+	static void Main(string[] args)
+	{
             Console.WriteLine("String Calculator\n");
             Console.CancelKeyPress += new ConsoleCancelEventHandler(myHandler);
             while (true)
@@ -21,7 +21,7 @@ class Program
                 Calculator calc = new Calculator(strInput);
                 var result = calc.CalculateNumbers();
             }
-		}
+	}
         protected static void myHandler(object sender, ConsoleCancelEventArgs args)
         {
             Console.WriteLine("\nThe Calculator has Ended due to User Input.");
