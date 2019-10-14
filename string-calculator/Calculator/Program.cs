@@ -10,12 +10,23 @@ namespace string_calculator
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("String Calculator\n");
-			Console.WriteLine("Please enter input\n");
-			var strInput = Console.ReadLine();
+            Console.WriteLine("String Calculator\n");
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(myHandler);
+            while (true)
+            {
+                
+                Console.WriteLine("\nPlease enter input or hit Ctrl+c to exit program\n");
+                var strInput = Console.ReadLine();
 
-			Calculator calc = new Calculator(strInput);
-            var result = calc.CalculateNumbers();
+                Calculator calc = new Calculator(strInput);
+                var result = calc.CalculateNumbers();
+            }
 		}
-	}
+
+        protected static void myHandler(object sender, ConsoleCancelEventArgs args)
+        {
+            Console.WriteLine("\nThe Calculator has Ended due to User Input.");
+            System.Environment.Exit(1);
+        }
+    }
 }

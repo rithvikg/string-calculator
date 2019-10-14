@@ -22,7 +22,7 @@ namespace string_calculator
 			this.input = input;
 		}
 
-		public string getInput()
+		public string GetInput()
 		{
 			return input;
 		}
@@ -30,7 +30,7 @@ namespace string_calculator
 		public int CalculateNumbers()
 		{
 			int result = 0;
-			string calcInput = getInput();
+			string calcInput = GetInput();
             List<int> negativeNumbers = new List<int>(); //List of negative numbers to return
             List<String> delimiterList = new List<String>(); //List of delimeters to split Input
 
@@ -65,7 +65,7 @@ namespace string_calculator
 
             string[] delimiterChars = delimiterList.ToArray();
 
-            var numList = calcInput.Split(delimiterChars, StringSplitOptions.None);
+            var numList = calcInput.Split(delimiterChars, StringSplitOptions.None); //To only get numbers
             
             for (int i = 0; i < numList.Length; i++)
 			{
